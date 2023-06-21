@@ -1,0 +1,12 @@
+public class CCCPractice3 {
+    static String Tuning() {
+    String[] input = {"AFB+8HC-4"};
+    for(int i; i<=i+=2)
+    return null;
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
+//Sample input, AFB+8HC-4
