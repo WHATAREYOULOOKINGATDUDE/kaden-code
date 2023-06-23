@@ -1,43 +1,54 @@
 import java.util.Scanner;
-// https://cccgrader.com/getproblem.php?fid=221084&authcode=8da8ad5f866e4bec2889bf24d4f4bc2d
+import java.util.ArrayList;
+import java.util.List;
+/*
+https://cccgrader.com/getproblem.php?fid=221072&authcode=d0610e41c96deacefd6f634c059ccf27
+l 2
+d 2
+r 1
+q 0
+ */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int highest = 0;
-        int highest2 = 0;
-        String highestName = null;
-        String highestName2 = null;
-        int size = sc.nextInt();
-        int specs [][] = new int[3][size];
-        String[] names = new String[size];
-        for (int i = 0; i < size; i++){
-            names[i] = sc.next();
-            for(int j = 0; j < 3; j++) {
-                specs[j][i] = sc.nextInt();
+        int noName = 0;
+        List<String> positions = new ArrayList<>();
+        positions.add("-1,-5");
+        int x = -1;
+        int y = -5;
+        boolean testingBool = false;
+        while (sc.hasNext() && testingBool != true) {
+            String command = sc.next();
+            if (command.equals("q")) {
+                testingBool = true;
             }
-            int score = 2 * specs[0][i] + 3 * specs[1][i] + specs[2][i];
-            if (score > highest || (score == highest && highestName != null && names[i].compareTo(highestName) < 0)) {
-                highest2 = highest;
-                highestName2 = highestName;
-                highest = score;
-                highestName = names[i];
-            } else if (score > highest2 || (score == highest2 && highestName2 != null && names[i].compareTo(highestName2) < 0)) {
-                highest2 = score;
-                highestName2 = names[i];
+            int size = sc.nextInt();
+                if (command.equals("l")) {
+                    x -= size;
+                } else if (command.equals("r")) {
+                    x += size;
+                } else if (command.equals("u")) {
+                    y += size;
+                } else if (command.equals("d")) {
+                    y -= size;
+                }
+                String currentPosition = x + "," + y;
+                boolean touched = false;
+                for (String position : positions) {
+                    if (position.equals(currentPosition)) {
+                        touched = true;
+                    }
+                }
+                if(noName == 0){
+                    System.out.println("");
+                    noName++;
+                }
+                if (touched == true) {
+                    System.out.println(currentPosition + " DANGER");
+                } else {
+                    System.out.println(currentPosition + " safe");
+                    positions.add(currentPosition);
+                }
             }
-        }
-        if(highestName != null) {
-            System.out.println(highestName);
-        }
-        if(highestName2 != null) {
-            System.out.println(highestName2);
         }
     }
-}
-/*
-4
-ABC 13 22 1
-DEF 10 20 30
-GHI 11 2 2
-JKL 20 20 20
-*/
