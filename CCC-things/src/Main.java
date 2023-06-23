@@ -16,12 +16,12 @@ public class Main {
                 specs[j][i] = sc.nextInt();
             }
             int score = 2 * specs[0][i] + 3 * specs[1][i] + specs[2][i];
-            if (score >= highest) {
+            if (score > highest || (score == highest && highestName != null && names[i].compareTo(highestName) < 0)) {
                 highest2 = highest;
                 highestName2 = highestName;
                 highest = score;
                 highestName = names[i];
-            } else if (score >= highest2) {
+            } else if (score > highest2 || (score == highest2 && highestName2 != null && names[i].compareTo(highestName2) < 0)) {
                 highest2 = score;
                 highestName2 = names[i];
             }
