@@ -5,8 +5,8 @@ public class Main13 {
         Scanner sc = new Scanner(System.in);
         int highest = 0;
         int highest2 = 0;
-        int placeholder = 0;
-        int placeholder2 = 0;
+        String highestName = null;
+        String highestName2 = null;
         int size = sc.nextInt();
         int specs [][] = new int[3][size];
         String[] names = new String[size];
@@ -15,22 +15,23 @@ public class Main13 {
             for(int j = 0; j < 3; j++) {
                 specs[j][i] = sc.nextInt();
             }
-        }
-
-        for(int i = 0; i < size; i++){
-            if(2 * specs[0][i] + 3 * specs[1][i] + specs[2][i] > placeholder) {
-                highest = i;
-                placeholder = 2 * specs[0][i] + 3 * specs[1][i] + specs[2][i];
-                }
-        }
-        for(int i = 0; i < size; i++){
-            if(placeholder >= 2 * specs[0][i] + 3 * specs[1][i] + specs[2][i] && 2 * specs[0][i] + 3 * specs[1][i] + specs[2][i] > placeholder2 && highest != i){
-                highest2 = i;
-                placeholder2 = 2 * specs[0][i] + 3 * specs[1][i] + specs[2][i];
+            int score = 2 * specs[0][i] + 3 * specs[1][i] + specs[2][i];
+            if (score >= highest) {
+                highest2 = highest;
+                highestName2 = highestName;
+                highest = score;
+                highestName = names[i];
+            } else if (score >= highest2) {
+                highest2 = score;
+                highestName2 = names[i];
             }
         }
-        System.out.println(names[highest]);
-        System.out.println(names[highest2]);
+        if(highestName != null) {
+            System.out.println(highestName);
+        }
+        if(highestName2 != null) {
+            System.out.println(highestName2);
+        }
     }
 }
 /*
