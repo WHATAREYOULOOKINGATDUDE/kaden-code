@@ -10,39 +10,70 @@ q 0
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int noName = 0;
-        Set<String> positions = new HashSet<>();
-        positions.add("-1,-5");
+        Set<String> positions = new HashSet<>(Set.of(
+                "0,-1",
+                "0,-2",
+                "0,-3",
+                "1,-3",
+                "2,-3",
+                "3,-3",
+                "3,-4",
+                "3,-5",
+                "4,-5",
+                "5,-5",
+                "5,-4",
+                "5,-3",
+                "6,-3",
+                "7,-3",
+                "7,-4",
+                "7,-5",
+                "7,-6",
+                "7,-7",
+                "6,-7",
+                "5,-7",
+                "4,-7",
+                "3,-7",
+                "2,-7",
+                "1,-7",
+                "0,-7",
+                "-1,-7",
+                "-1,-6",
+                "-1,-5"));
         int x = -1;
         int y = -5;
-        boolean testingBool = false;
-        while (sc.hasNext() && testingBool != true) {
+        boolean printed = false;
+        while (sc.hasNext()) {
+            if (!printed) {
+                System.out.println();
+                printed = true;
+            }
             String command = sc.next();
             if (command.equals("q")) {
-                testingBool = true;
+                break;
             }
-            int size = sc.nextInt();
+            int steps = sc.nextInt();
+            boolean touched = false;
+            String currentPosition = null;
+            for(int i = 0; i < steps; i++) {
                 if (command.equals("l")) {
-                    x -= size;
+                    x--;
                 } else if (command.equals("r")) {
-                    x += size;
+                    x++;
                 } else if (command.equals("u")) {
-                    y += size;
+                    y++;
                 } else if (command.equals("d")) {
-                    y -= size;
+                    y--;
                 }
-                String currentPosition = x + "," + y;
-                boolean touched = positions.contains(currentPosition)
-                if(noName == 0){
-                    System.out.println("");
-                    noName++;
-                }
-                if (touched == true) {
-                    System.out.println(currentPosition + " DANGER");
-                } else {
-                    System.out.println(currentPosition + " safe");
-                    positions.add(currentPosition);
-                }
+                currentPosition = x + "," + y;
+                touched = touched || positions.contains(currentPosition);
+                positions.add(currentPosition);
+            }
+            if (touched) {
+                System.out.println(currentPosition + " DANGER");
+                break;
+            } else {
+                System.out.println(currentPosition + " safe");
             }
         }
     }
+}
