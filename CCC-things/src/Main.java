@@ -1,6 +1,5 @@
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 /*
 https://cccgrader.com/getproblem.php?fid=221072&authcode=d0610e41c96deacefd6f634c059ccf27
 l 2
@@ -12,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int noName = 0;
-        List<String> positions = new ArrayList<>();
+        Set<String> positions = new HashSet<>();
         positions.add("-1,-5");
         int x = -1;
         int y = -5;
@@ -33,12 +32,7 @@ public class Main {
                     y -= size;
                 }
                 String currentPosition = x + "," + y;
-                boolean touched = false;
-                for (String position : positions) {
-                    if (position.equals(currentPosition)) {
-                        touched = true;
-                    }
-                }
+                boolean touched = positions.contains(currentPosition)
                 if(noName == 0){
                     System.out.println("");
                     noName++;
