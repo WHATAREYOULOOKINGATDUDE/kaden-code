@@ -10,35 +10,35 @@ q 0
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Set<String> positions = new HashSet<>(Set.of(
-                "0,-1",
-                "0,-2",
-                "0,-3",
-                "1,-3",
-                "2,-3",
-                "3,-3",
-                "3,-4",
-                "3,-5",
-                "4,-5",
-                "5,-5",
-                "5,-4",
-                "5,-3",
-                "6,-3",
-                "7,-3",
-                "7,-4",
-                "7,-5",
-                "7,-6",
-                "7,-7",
-                "6,-7",
-                "5,-7",
-                "4,-7",
-                "3,-7",
-                "2,-7",
-                "1,-7",
-                "0,-7",
-                "-1,-7",
-                "-1,-6",
-                "-1,-5"));
+        Set<String> positions = new HashSet<>();
+        positions.add("0,-1");
+        positions.add("0,-2");
+        positions.add("0,-3");
+        positions.add("1,-3");
+        positions.add("2,-3");
+        positions.add("3,-3");
+        positions.add("3,-4");
+        positions.add("3,-5");
+        positions.add("4,-5");
+        positions.add("5,-5");
+        positions.add("5,-4");
+        positions.add("5,-3");
+        positions.add("6,-3");
+        positions.add("7,-3");
+        positions.add("7,-4");
+        positions.add("7,-5");
+        positions.add("7,-6");
+        positions.add("7,-7");
+        positions.add("6,-7");
+        positions.add("5,-7");
+        positions.add("4,-7");
+        positions.add("3,-7");
+        positions.add("2,-7");
+        positions.add("1,-7");
+        positions.add("0,-7");
+        positions.add("-1,-7");
+        positions.add("-1,-6");
+        positions.add("-1,-5");
         int x = -1;
         int y = -5;
         boolean printed = false;
