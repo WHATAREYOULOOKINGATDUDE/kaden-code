@@ -1,79 +1,53 @@
-import java.util.*;
+import java.util.Scanner;
 
-/*
-https://cccgrader.com/getproblem.php?fid=221072&authcode=d0610e41c96deacefd6f634c059ccf27
-l 2
-d 2
-r 1
-q 0
- */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Set<String> positions = new HashSet<>();
-        positions.add("0 -1");
-        positions.add("0 -2");
-        positions.add("0 -3");
-        positions.add("1 -3");
-        positions.add("2 -3");
-        positions.add("3 -3");
-        positions.add("3 -4");
-        positions.add("3 -5");
-        positions.add("4 -5");
-        positions.add("5 -5");
-        positions.add("5 -4");
-        positions.add("5 -3");
-        positions.add("6 -3");
-        positions.add("7 -3");
-        positions.add("7 -4");
-        positions.add("7 -5");
-        positions.add("7 -6");
-        positions.add("7 -7");
-        positions.add("6 -7");
-        positions.add("5 -7");
-        positions.add("4 -7");
-        positions.add("3 -7");
-        positions.add("2 -7");
-        positions.add("1 -7");
-        positions.add("0 -7");
-        positions.add("-1 -7");
-        positions.add("-1 -6");
-        positions.add("-1 -5");
-        int x = -1;
-        int y = -5;
-        boolean printed = false;
-        while (sc.hasNext()) {
-            if (!printed) {
-                System.out.println();
-                printed = true;
-            }
-            String command = sc.next();
-            if (command.equals("q")) {
-                break;
-            }
-            int steps = sc.nextInt();
-            boolean touched = false;
-            String currentPosition = null;
-            for(int i = 0; i < steps; i++) {
-                if (command.equals("l")) {
-                    x--;
-                } else if (command.equals("r")) {
-                    x++;
-                } else if (command.equals("u")) {
-                    y++;
-                } else if (command.equals("d")) {
-                    y--;
+        int input = sc.nextInt();
+        String[][] storage = new String[3][3];
+        storage[0][0] = "*";
+        storage[0][1] = "X";
+        storage[0][2] = "*";
+        storage[1][0] = "";
+        storage[1][1] = "X";
+        storage[1][2] = "X";
+        storage[2][0] = "*";
+        storage[2][1] = "";
+        storage[2][2] = "*";
+        for (int i = 0; i < input * input; i++) {
+            for (int j = 0; j < input * input; j++) {
+                if(i < input && j < input){
+                System.out.print("*");
                 }
-                currentPosition = x + " " + y;
-                touched = touched || positions.contains(currentPosition);
-                positions.add(currentPosition);
+                else if(i < input && j < input * 2){
+                    System.out.print("x");
+                } else if (i < input && j < input * 3 && input * 3 > input * 2) {
+                    System.out.print("*");
+                } else if (i < input * 2 && j < input) {
+                    System.out.print(" ");
+                }
+                else if(i < input * 2 && j < input * 2){
+                    System.out.print("x");
+                } else if (i < input * 2 && j < input * 3 && input * 3 > input * 2) {
+                    System.out.print("x");
+                }
+                else if (i < input * 3 && j < input) {
+                System.out.print("*");
+                }
+                else if(i < input * 3 && j < input * 2){
+                System.out.print(" ");
+                } else if (i < input * 3 && j < input * 3 && input * 3 > input * 2) {
+                System.out.print("*");
+                }
             }
-            if (touched) {
-                System.out.println(currentPosition + " DANGER");
-                break;
-            } else {
-                System.out.println(currentPosition + " safe");
-            }
+            System.out.println("");
         }
     }
 }
+/*
+
+*x*
+ xx
+* *
+
+ */
