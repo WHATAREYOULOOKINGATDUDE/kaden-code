@@ -4,30 +4,32 @@ import static java.lang.Math.abs;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int startingShift = sc.nextInt();
-        int shiftAmount = 0;
+        int K = sc.nextInt();
         String startingLetters = sc.next();
-        char processedLetters[] = new char[startingLetters.length()];
-        char numberLetters[] = new char[startingLetters.length()];
-        int overflowCounter = 0;
-        processedLetters = startingLetters.toCharArray();
-        String finalWord = "";
-
-        for(int i = 0; i < numberLetters.length; i++){
-            shiftAmount = startingShift + (3 * (i + 1));
-            if(abs(shiftAmount - processedLetters[i]) < 65) {
-                overflowCounter = abs(65 + (shiftAmount - processedLetters[i]));
+        int length = startingLetters.length();
+        char[] processedLetters = startingLetters.toCharArray();
+        StringBuffer sb = new StringBuffer();
+        for(int i = 0; i < length; i++){
+            int shiftAmount = (K + (3 * (i + 1))) % 26;
+            int original = processedLetters[i] - shiftAmount;
+            if (original < 'A') {
+                sb.append((char) ('Z' - ('A' - original) + 1));
+            } else {
+                sb.append((char) original);
             }
-
-            if(overflowCounter == 0){
-                numberLetters[i] = (char) (processedLetters[i] - shiftAmount);
-            }
-            else{
-                numberLetters[i] = (char) ('Z' - overflowCounter - 1);
-            }
-            finalWord = numberLetters.toString();
+//            if(abs(shiftAmount - processedLetters[i]) < 65) {
+//                overflowCounter = abs(65 + (shiftAmount - processedLetters[i]));
+//            }
+//
+//            if(overflowCounter == 0){
+//                numberLetters[i] = (char) (processedLetters[i] - shiftAmount);
+//            }
+//            else{
+//                numberLetters[i] = (char) ('Z' - overflowCounter - 1);
+//            }
+//            finalWord = numberLetters.toString();
         }
-        System.out.println(finalWord);
+        System.out.println(sb);
     }
 }
 /*
