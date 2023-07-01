@@ -1,8 +1,14 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
-//https://cccgrader.com/getproblem.php?fid=221007&authcode=29b8d4570578539945eefff14aefd96c
+//https://cccgrader.com/getproblem.php?fid=220944&authcode=fa89fd8de8b4d71b9aa2f016c6f40048
+
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Map<Character, String> dictionary = new HashMap<>();
+        dictionary.put('y', "yuz");
+
         int size = sc.nextInt();
         int points = 100;
         int points2 = 100;
