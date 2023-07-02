@@ -1,30 +1,33 @@
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
-//https://cccgrader.com/getproblem.php?fid=220944&authcode=fa89fd8de8b4d71b9aa2f016c6f40048
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Map<Character, String> dictionary = new HashMap<>();
-        dictionary.put('y', "yuz");
-
-        int size = sc.nextInt();
-        int points = 100;
-        int points2 = 100;
-
-        for (int i = 0; i < size; i++) {
-            int pointsRoll = sc.nextInt();
-            int pointsRoll2 = sc.nextInt();
-
-            if (pointsRoll < pointsRoll2) {
-                points -= pointsRoll2;
-            } else if (pointsRoll2 < pointsRoll) {
-                points2 -= pointsRoll;
+        String word = sc.nextLine().trim();
+        int longest = findLongest(word);
+        System.out.println(longest);
+    }
+    public static int findLongest(String word) {
+        int maxLength = 0;
+        for (int i = 0; i < word.length(); i++) {
+            for (int j = word.length() - 1; j >= i; j--) {
+                if (isPalindrome(word, i, j)) {
+                    int length = j - i + 1;
+                    maxLength = Math.max(maxLength, length);
+                    break;
+                }
             }
         }
-
-        System.out.println(points);
-        System.out.println(points2);
+        return maxLength;
+    }
+    public static boolean isPalindrome(String word, int start, int end) {
+        while (start < end) {
+            if (word.charAt(start) != word.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
     }
 }

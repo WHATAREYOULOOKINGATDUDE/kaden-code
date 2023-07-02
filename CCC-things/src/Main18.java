@@ -1,25 +1,28 @@
 import java.util.Scanner;
 
-//https://cccgrader.com/getproblem.php?fid=221007&authcode=29b8d4570578539945eefff14aefd96c
 public class Main18 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int size = sc.nextInt();
-        int points = 100;
-        int points2 = 100;
+        Scanner scanner = new Scanner(System.in);
+        int input = scanner.nextInt();
 
-        for (int i = 0; i < size; i++) {
-            int pointsRoll = sc.nextInt();
-            int pointsRoll2 = sc.nextInt();
+        input++;
 
-            if (pointsRoll < pointsRoll2) {
-                points -= pointsRoll2;
-            } else if (pointsRoll2 < pointsRoll) {
-                points2 -= pointsRoll;
-            }
+        while (!hasDistinctDigits(input)) {
+            input++;
         }
 
-        System.out.println(points);
-        System.out.println(points2);
+        System.out.println(input);
+    }
+    public static boolean hasDistinctDigits(int input) {
+        boolean[] digitSeen = new boolean[10];
+        while (input > 0) {
+            int number = input % 10;
+            if (digitSeen[number]) {
+                return false;
+            }
+            digitSeen[number] = true;
+            input /= 10;
+        }
+        return true;
     }
 }
