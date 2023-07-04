@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+// https://cccgrader.com/getproblem.php?fid=150553&authcode=3d6e03d95dbedc67f696b9c1ad39f699
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
