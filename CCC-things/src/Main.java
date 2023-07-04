@@ -8,49 +8,23 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
         String[] placeholder = input.split(":");
-        int hours = Integer.parseInt(placeholder[0]);
-        int minutes = Integer.parseInt(placeholder[1]);
-        float changeAmountH = 0;
-        float changeAmountM = 0;
-        if(hours + changeAmountH >= 7 && hours + changeAmountH < 10){
-            while(hours + changeAmountH < 10){
-                changeAmountH = 10 - hours;
-            }
-            changeAmountM += (4 - changeAmountH) / 2;
-        }
+        int minutes = Integer.parseInt(placeholder[0]) * 60 + Integer.parseInt(placeholder[1]);
 
-        else if(hours + changeAmountH >= 15 && hours + changeAmountH < 19){
-            while(hours + changeAmountH < 19){
-                changeAmountH = 19 - hours;
+        for (int i = 0; i < 120; i++) {
+            if ((minutes >= 420 && minutes < 600 - 1) || (minutes >= 900 && minutes < 1120 - 1) ) {
+                minutes += 2;
+            } else {
+                minutes ++;
             }
-            changeAmountM += (4 - changeAmountH) / 2;
         }
+        minutes = minutes % 1440;
 
-        else{
-            changeAmountH = 2;
-        }
-        int outputM = (int) ((minutes + changeAmountM * 60)) % 60;
-        int outputH = (int) ((hours + changeAmountH) % 24);
-        if(outputM == 0 && changeAmountM == 0){
-            if(outputH < 10) {
-                System.out.println("0" + outputH + ":" + "00");
-            }
-            else{
-                System.out.println(outputH + ":" + "00");
-            }
-        }
-        else {
-            String outputMStr = outputM < 10
-                    ? "0" + outputM
-                    : "" + outputM;
-            if(outputH < 10) {
-                System.out.println("0" + outputH + ":" + outputMStr);
-            }
-            else{
-                System.out.println(outputH + ":" + outputMStr);
-            }
-        }
+        int h = minutes / 60;
+        int m = minutes % 60;
 
+        String hStr = h < 10 ? "0" + h : "" + h;
+        String mStr = m < 10 ? "0" + m : "" + m;
+        System.out.println(hStr + ":" + mStr);
 
     }
 }
