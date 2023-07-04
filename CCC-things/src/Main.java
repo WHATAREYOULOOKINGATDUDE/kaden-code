@@ -1,3 +1,5 @@
+import java.sql.Time;
+import java.util.Date;
 import java.util.Scanner;
 
 // https://cccgrader.com/getproblem.php?fid=150553&authcode=3d6e03d95dbedc67f696b9c1ad39f699
@@ -38,11 +40,14 @@ public class Main {
             }
         }
         else {
+            String outputMStr = outputM < 10
+                    ? "0" + outputM
+                    : "" + outputM;
             if(outputH < 10) {
-                System.out.println("0" + outputH + ":" + outputM);
+                System.out.println("0" + outputH + ":" + outputMStr);
             }
             else{
-                System.out.println(outputH + ":" + outputM);
+                System.out.println(outputH + ":" + outputMStr);
             }
         }
 
