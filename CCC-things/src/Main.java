@@ -28,7 +28,8 @@ public class Main {
     // is this an arithmetic time?
     private static boolean isArithmetic(int minutes) {
         int time = (720 + minutes) % 1440;
-        int hr = (time / 60) % 13;
+        int hr = time / 60;
+        hr = hr > 12 ? hr -12 : hr;
         int m = time % 60;
         List<Integer> list = new ArrayList<>();
         if (hr > 9) {
