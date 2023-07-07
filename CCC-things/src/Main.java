@@ -29,7 +29,7 @@ public class Main {
     private static boolean isArithmetic(int minutes) {
         int time = (720 + minutes) % 1440;
         int hr = time / 60;
-        hr = hr > 12 ? hr -12 : hr;
+        hr = hr == 0 ? 12 : (hr > 12 ? hr -12 : hr);
         int m = time % 60;
         List<Integer> list = new ArrayList<>();
         if (hr > 9) {
