@@ -7,7 +7,7 @@ public class Main5 {
         for (int i = 0; i < size; i++) {
             int thing1 = sc.nextInt();
             String thing = sc.next();
-            System.out.println("");
+            System.out.println();
             for (int j = 0; j < thing1; j++) {
                 System.out.print(thing);
             }

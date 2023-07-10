@@ -27,7 +27,7 @@ public class Main16 {
                         System.out.print("*");
                     }
                 }
-                System.out.println("");
+                System.out.println();
             }
         }
         else if(input == 1){

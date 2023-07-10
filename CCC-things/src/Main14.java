@@ -8,7 +8,7 @@ public class Main14 {
         String highestName = null;
         String highestName2 = null;
         int size = sc.nextInt();
-        int specs [][] = new int[3][size];
+        int[][] specs = new int[3][size];
         String[] names = new String[size];
         for (int i = 0; i < size; i++){
             names[i] = sc.next();

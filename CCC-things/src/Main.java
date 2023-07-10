@@ -1,52 +1,41 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-// https://cccgrader.com/getproblem.php?fid=146516&authcode=e79090007d2b282d7ee16a3d355b9a10
+//https://cccgrader.com/getproblem.php?fid=221065&authcode=5057fc9fe97062b911173ce8a98cfbd4
 public class Main {
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int size = sc.nextInt();
-        int days = size / 1440;
-        int minutes = size % 1440;
-        int counter = 0;
-        int counterDay = 0;
-        for (int i = 0; i < 1440; i++) {
-            if (isArithmetic(i)) {
-                if (i <= minutes) {
-                    counter ++;
-                }
-                counterDay ++;
+        int questions = sc.nextInt();
+        char[] studentAnswers = new char[questions];
+        char[] answerKey = new char[questions];
+        String studentAnswersS = "";
+        String answerKeyS = "";
+        int output = 0;
+        for(int i = 0; i < questions; i++) {
+            studentAnswersS += sc.next();
+        }
+        for(int i = 0; i < questions; i++){
+            answerKeyS += sc.next();
+        }
+        studentAnswers = studentAnswersS.toCharArray();
+        answerKey = answerKeyS.toCharArray();
+        for(int i = 0; i < questions; i++){
+            if(studentAnswers[i] == answerKey[i]){
+                output++;
             }
         }
-        int total = days * counterDay + counter;
-        System.out.println(total);
-    }
-
-    // starting from 12
-    // after i minutes
-    // is this an arithmetic time?
-    private static boolean isArithmetic(int minutes) {
-        int time = (720 + minutes) % 1440;
-        int hr = time / 60;
-        hr = hr == 0 ? 12 : (hr > 12 ? hr -12 : hr);
-        int m = time % 60;
-        List<Integer> list = new ArrayList<>();
-        if (hr > 9) {
-            list.add(hr/10);
-        }
-        list.add(hr %10);
-        list.add(m/10);
-        list.add(m%10);
-        int diff = Integer.MAX_VALUE;
-        for(int i = 0; i< list.size() -1; i++) {
-            int newDiff = list.get(i + 1) - list.get(i);
-            if(i == 0) {
-                diff = newDiff;
-            } else if(newDiff != diff) {
-                return false;
-            }
-        }
-        return true;
+        System.out.println(output);
     }
 }
+/*
+
+Sample Input 1
+3
+A
+B
+C
+A
+C
+B
+Output for Sample Input 1
+1
+
+ */

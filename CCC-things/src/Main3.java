@@ -7,7 +7,7 @@ public class Main3 {
         int m = sc.nextInt();
         int l = sc.nextInt();
         sc.close();
-        if (((s * 1) + (m * 2) + (l * 3)) >= 10) {
+        if (((s) + (m * 2) + (l * 3)) >= 10) {
             System.out.println("happy");
         } else {
             System.out.println("sad");
