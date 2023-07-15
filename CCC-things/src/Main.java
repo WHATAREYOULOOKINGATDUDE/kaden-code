@@ -1,41 +1,59 @@
 import java.util.Scanner;
-//https://cccgrader.com/getproblem.php?fid=221065&authcode=5057fc9fe97062b911173ce8a98cfbd4
+
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int questions = sc.nextInt();
-        char[] studentAnswers = new char[questions];
-        char[] answerKey = new char[questions];
-        String studentAnswersS = "";
-        String answerKeyS = "";
-        int output = 0;
-        for(int i = 0; i < questions; i++) {
-            studentAnswersS += sc.next();
-        }
-        for(int i = 0; i < questions; i++){
-            answerKeyS += sc.next();
-        }
-        studentAnswers = studentAnswersS.toCharArray();
-        answerKey = answerKeyS.toCharArray();
-        for(int i = 0; i < questions; i++){
-            if(studentAnswers[i] == answerKey[i]){
-                output++;
+        int size = sc.nextInt();
+        char[] day = new char[size];
+        int[][] peoplePoints = new int[size][5];
+        int[] maxPoints = new int[5];
+        int counter2 = 0;
+        int placeholder = 0;
+        for (int i = 0; i < size; i++) {
+            day = sc.next().toCharArray();
+            for(int j = 0; j < 5; j++) {
+                if (day[j] == '.') {
+                    peoplePoints[i][j] = 0;
+                } else {
+                    peoplePoints[i][j] = 1;
+                }
             }
         }
-        System.out.println(output);
+        for (int i = 0; i < 5; i++) {
+            int[] counter = new int[5];
+            for(int j = 0; j < size; j++) {
+                if(peoplePoints[j][i] == 1){
+                    counter[i] += 1;
+                }
+            }
+            if(counter[i] > placeholder){
+                for(int j = 0; j < 5; j++) {
+                    maxPoints[j] = 0;
+                }
+                placeholder = counter[i];
+                maxPoints[0] = i + 1;
+            } else if (counter[i] == placeholder) {
+                maxPoints[counter2 + 1] = i + 1;
+                counter2++;
+            }
+        }
+        for(int i = 0; i <= counter2; i++){
+            if (counter2 > 0 && i + 1 <= counter2) {
+                System.out.print(maxPoints[i]);
+                System.out.print(',');
+            } else if (counter2 != 0){
+                System.out.print(maxPoints[i]);
+            }
+        }
+        if(counter2 == 0) {
+            System.out.print(maxPoints[0]);
+        }
     }
 }
 /*
-
-Sample Input 1
+Sample 1
 3
-A
-B
-C
-A
-C
-B
-Output for Sample Input 1
-1
-
+YY.Y.
+...Y.
+.YYY.
  */
