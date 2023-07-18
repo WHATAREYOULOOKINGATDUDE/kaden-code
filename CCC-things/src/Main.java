@@ -1,48 +1,39 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int size = sc.nextInt();
-        int[] counts = new int[5];
-        for (int i = 0; i < size; i++) {
-            char[] day = sc.next().toCharArray();
-            for(int j = 0; j < 5; j++) {
-                if (day[j] == 'Y') {
-                    counts[j] = counts[j] + 1;
-                }
-            }
+        char[] input = sc.next().toCharArray();
+        char[][] output = new char[2][2];
+        int hFlips = 0;
+        int vFlips = 0;
+        output[0][0] = 1;
+        output[1][0] = 2;
+        output[0][1] = 3;
+        output[1][1] = 4;
+        for(int i = 0; i < input.length; i++){
+        if(input[i] == 'V'){
+            vFlips++;
         }
-        List<Integer> days = new ArrayList<>();
-        int max = 0;
-        for(int i = 0; i<5; i++) {
-            int n = counts[i];
-            if (n == max) {
-                days.add(i + 1);
-            } else if (n > max) {
-                max = n;
-                days.clear();
-                days.add(i + 1);
-            }
+        else{
+            hFlips++;
         }
-        String result = "";
-        for (int i = 0; i < days.size(); i++) {
-            if (i == 0) {
-                result += days.get(i);
-            } else {
-                result += "," + days.get(i);
-            }
         }
-        System.out.println(result);
+        hFlips = hFlips % 2;
+        vFlips = vFlips % 2;
+        if(hFlips == 0 && vFlips == 0){
+            System.out.println("1 2");
+            System.out.println("3 4");
+        } else if (hFlips == 1 && vFlips == 0) {
+            System.out.println("3 4");
+            System.out.println("1 2");
+        } else if (hFlips == 0 && vFlips == 1) {
+            System.out.println("2 1");
+            System.out.println("4 3");
+        } else {
+            System.out.println("4 3");
+            System.out.println("2 1");
+        }
 
     }
 }
-/*
-Sample 1
-3
-YY.Y.
-...Y.
-.YYY.
- */
