@@ -4,13 +4,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         char[] input = sc.next().toCharArray();
-        char[][] output = new char[2][2];
         int hFlips = 0;
         int vFlips = 0;
-        output[0][0] = 1;
-        output[1][0] = 2;
-        output[0][1] = 3;
-        output[1][1] = 4;
+
         for(int i = 0; i < input.length; i++){
         if(input[i] == 'V'){
             vFlips++;
